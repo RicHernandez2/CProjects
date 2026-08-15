@@ -34,9 +34,24 @@ const ATTACK_COOLDOWN_TIME := 0.35
 
 func _ready() -> void:
 	add_to_group("player")
-	current_health = max_health
-	bombs = get_bomb_capacity()
+
+	if GameState.has_saved_player_state():
+		max_health = GameState.player_max_health
+		current_health = GameState.player_health
+		bombs = GameState.player_bombs
+		tunic_color = GameState.player_tunic_color
+	else:
+		current_health = max_health
+		bombs = get_bomb_capacity()
+		_sync_to_game_state()
+
 	_update_tunic_color()
+
+	if GameState.has_pending_spawn:
+		global_position = GameState.consume_pending_spawn()
+
+func _sync_to_game_state() -> void:
+	GameState.save_player_state(current_health, max_health, bombs, tunic_color)
 
 func _physics_process(delta: float) -> void:
 	if _attack_cooldown > 0.0:
@@ -82,6 +97,7 @@ func place_bomb() -> void:
 	if not GameState.zeus_mode:
 		bombs -= 1
 		bombs_changed.emit(bombs)
+		_sync_to_game_state()
 	var bomb = preload("res://scenes/entities/Bomb.tscn").instantiate()
 	bomb.global_position = global_position
 	get_parent().add_child(bomb)
@@ -89,6 +105,7 @@ func place_bomb() -> void:
 func refill_bombs() -> void:
 	bombs = get_bomb_capacity()
 	bombs_changed.emit(bombs)
+	_sync_to_game_state()
 
 # === MELEE ATTACK ===
 func perform_attack() -> void:
@@ -116,6 +133,7 @@ func take_damage(amount: int, type: String = "physical") -> void:
 	current_health = max(0, current_health)
 
 	health_changed.emit(current_health)
+	_sync_to_game_state()
 
 	CombatSystem.check_over_mitigation_heal(self, amount, type)
 
@@ -127,6 +145,7 @@ func take_damage(amount: int, type: String = "physical") -> void:
 func heal(amount: int) -> void:
 	current_health = min(current_health + amount, max_health)
 	health_changed.emit(current_health)
+	_sync_to_game_state()
 
 func die() -> void:
 	died.emit()
@@ -153,6 +172,7 @@ func check_tunic_color_change() -> void:
 		tunic_color = new_color
 		_update_tunic_color()
 		tunic_color_changed.emit(tunic_color)
+		_sync_to_game_state()
 
 func _update_tunic_color() -> void:
 	match tunic_color:

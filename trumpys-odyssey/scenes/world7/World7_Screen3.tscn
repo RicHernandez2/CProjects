@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://scenes/ui/InventoryUI.tscn" id="9"]
 
-[node name="World1Screen1" type="Node2D"]
+[node name="World7Screen3" type="Node2D"]
 script = ExtResource("1")
-world_id = 1
-screen_label = "Verdant Hollow - Screen 1"
+world_id = 7
+screen_label = "Marrow Fen - Screen 3"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -25,7 +25,7 @@ offset_left = -400.0
 offset_top = -400.0
 offset_right = 1200.0
 offset_bottom = 900.0
-color = Color(0.13, 0.55, 0.13, 0.6)
+color = Color(0.25, 0.42, 0.38, 0.6)
 
 [node name="MidLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.6, 0.6)
@@ -35,79 +35,55 @@ offset_left = -200.0
 offset_top = 200.0
 offset_right = 1000.0
 offset_bottom = 700.0
-color = Color(0.1, 0.35, 0.1, 0.45)
+color = Color(0.15, 0.28, 0.25, 0.5)
 
 [node name="Ground" type="ColorRect" parent="."]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 640.0
 offset_bottom = 480.0
-color = Color(0.13, 0.55, 0.13, 1.0)
+color = Color(0.25, 0.42, 0.38, 1.0)
 
 [node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(320.0, 240.0)
 
 [node name="CrackedWall0" parent="." instance=ExtResource("3")]
-position = Vector2(407, 209)
-secret_id = 1
+position = Vector2(135, 272)
+secret_id = 51
 
 [node name="CrackedWall0Torch0" type="ColorRect" parent="."]
-offset_left = 382.0
-offset_top = 189.0
-offset_right = 392.0
-offset_bottom = 209.0
+offset_left = 110.0
+offset_top = 252.0
+offset_right = 120.0
+offset_bottom = 272.0
 color = Color(1, 0.55, 0, 1)
 
 [node name="CrackedWall0Torch1" type="ColorRect" parent="."]
-offset_left = 422.0
-offset_top = 189.0
-offset_right = 432.0
-offset_bottom = 209.0
-color = Color(1, 0.55, 0, 1)
-
-[node name="CrackedWall1" parent="." instance=ExtResource("3")]
-position = Vector2(386, 293)
-secret_id = 65
-
-[node name="CrackedWall1Torch0" type="ColorRect" parent="."]
-offset_left = 361.0
-offset_top = 273.0
-offset_right = 371.0
-offset_bottom = 293.0
-color = Color(1, 0.55, 0, 1)
-
-[node name="CrackedWall1Torch1" type="ColorRect" parent="."]
-offset_left = 401.0
-offset_top = 273.0
-offset_right = 411.0
-offset_bottom = 293.0
+offset_left = 150.0
+offset_top = 252.0
+offset_right = 160.0
+offset_bottom = 272.0
 color = Color(1, 0.55, 0, 1)
 
 [node name="Wall0" parent="." instance=ExtResource("4")]
-position = Vector2(134, 367)
+position = Vector2(323, 149)
 
 [node name="Wall1" parent="." instance=ExtResource("4")]
-position = Vector2(219, 223)
+position = Vector2(228, 283)
 
 [node name="Wall2" parent="." instance=ExtResource("4")]
-position = Vector2(257, 358)
-
-[node name="Wall3" parent="." instance=ExtResource("4")]
-position = Vector2(146, 240)
+position = Vector2(510, 233)
 
 [node name="Trumpy0" parent="." instance=ExtResource("5")]
-position = Vector2(192, 155)
-trumpy_color = Color(1, 0.5, 0, 1.0)
+position = Vector2(155, 171)
+trumpy_color = Color(0.6, 0, 1, 1.0)
 
 [node name="Trumpy1" parent="." instance=ExtResource("5")]
-position = Vector2(512, 276)
-trumpy_color = Color(0.2, 0.3, 1, 1.0)
+position = Vector2(408, 138)
+trumpy_color = Color(0, 0.8, 0.2, 1.0)
 
 [node name="Enemy0" parent="." instance=ExtResource("6")]
-position = Vector2(286, 121)
-
-[node name="Enemy1" parent="." instance=ExtResource("6")]
-position = Vector2(444, 353)
+position = Vector2(229, 167)
 
 [node name="Boundary_north0" parent="." instance=ExtResource("4")]
 position = Vector2(20, 0)
@@ -144,37 +120,37 @@ position = Vector2(620, 0)
 
 [node name="Exit_south" parent="." instance=ExtResource("7")]
 position = Vector2(320.0, 460)
-target_scene = "res://scenes/world1/World1_Screen4.tscn"
+target_scene = "res://scenes/world7/World7_Screen6.tscn"
 spawn_position = Vector2(320.0, 40)
 
-[node name="Exit_east" parent="." instance=ExtResource("7")]
-position = Vector2(620, 240.0)
-target_scene = "res://scenes/world1/World1_Screen2.tscn"
-spawn_position = Vector2(40, 240.0)
+[node name="Boundary_east0" parent="." instance=ExtResource("4")]
+position = Vector2(640, 20)
 
-[node name="Boundary_west0" parent="." instance=ExtResource("4")]
-position = Vector2(0, 20)
+[node name="Boundary_east1" parent="." instance=ExtResource("4")]
+position = Vector2(640, 80)
 
-[node name="Boundary_west1" parent="." instance=ExtResource("4")]
-position = Vector2(0, 80)
+[node name="Boundary_east2" parent="." instance=ExtResource("4")]
+position = Vector2(640, 140)
 
-[node name="Boundary_west2" parent="." instance=ExtResource("4")]
-position = Vector2(0, 140)
+[node name="Boundary_east3" parent="." instance=ExtResource("4")]
+position = Vector2(640, 200)
 
-[node name="Boundary_west3" parent="." instance=ExtResource("4")]
-position = Vector2(0, 200)
+[node name="Boundary_east4" parent="." instance=ExtResource("4")]
+position = Vector2(640, 260)
 
-[node name="Boundary_west4" parent="." instance=ExtResource("4")]
-position = Vector2(0, 260)
+[node name="Boundary_east5" parent="." instance=ExtResource("4")]
+position = Vector2(640, 320)
 
-[node name="Boundary_west5" parent="." instance=ExtResource("4")]
-position = Vector2(0, 320)
+[node name="Boundary_east6" parent="." instance=ExtResource("4")]
+position = Vector2(640, 380)
 
-[node name="Boundary_west6" parent="." instance=ExtResource("4")]
-position = Vector2(0, 380)
+[node name="Boundary_east7" parent="." instance=ExtResource("4")]
+position = Vector2(640, 440)
 
-[node name="Boundary_west7" parent="." instance=ExtResource("4")]
-position = Vector2(0, 440)
+[node name="Exit_west" parent="." instance=ExtResource("7")]
+position = Vector2(20, 240.0)
+target_scene = "res://scenes/world7/World7_Screen2.tscn"
+spawn_position = Vector2(600, 240.0)
 
 [node name="HUD" parent="." instance=ExtResource("8")]
 

@@ -4,6 +4,7 @@
 
 extends CanvasLayer
 
+@onready var location_label: Label = $Panel/VBox/LocationLabel
 @onready var health_label: Label = $Panel/VBox/HealthLabel
 @onready var bombs_label: Label = $Panel/VBox/BombsLabel
 @onready var secrets_label: Label = $Panel/VBox/SecretsLabel
@@ -27,6 +28,12 @@ func _ready() -> void:
 	_refresh_secrets_label()
 	_on_gems_changed(GameState.gems)
 	_on_zeus_mode_changed(GameState.zeus_mode)
+
+func _process(_delta: float) -> void:
+	# Screen root (parent) sets GameState.current_world/current_screen in its
+	# own _ready(), which Godot calls *after* this child's _ready() -- so
+	# location is refreshed lazily here instead of read once at startup.
+	location_label.text = "World %d - %s" % [GameState.current_world, GameState.current_screen]
 
 func _on_health_changed(new_health: int) -> void:
 	var hearts := ceil(new_health / 2.0)

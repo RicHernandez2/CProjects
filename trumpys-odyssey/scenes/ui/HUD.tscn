@@ -9,9 +9,12 @@ script = ExtResource("1")
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 220.0
-offset_bottom = 140.0
+offset_bottom = 160.0
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
+
+[node name="LocationLabel" type="Label" parent="Panel/VBox"]
+text = "World 1"
 
 [node name="HealthLabel" type="Label" parent="Panel/VBox"]
 text = "Hearts: 6/6"
