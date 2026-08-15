@@ -1,0 +1,9 @@
+# Godot 4+ generated cache/import artifacts
+.godot/
+export_presets.cfg
+*.translation
+
+# Export output
+builds/
+*.exe
+*.pck
