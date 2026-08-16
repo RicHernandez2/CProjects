@@ -1,0 +1,170 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/screen_root.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/entities/Player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/entities/CrackedWall.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/entities/Wall.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/entities/Trumpy.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/entities/Enemy.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/entities/ScreenExit.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/ui/InventoryUI.tscn" id="9"]
+
+[node name="World2Screen8" type="Node2D"]
+script = ExtResource("1")
+world_id = 2
+screen_label = "Sundered Dunes - Screen 8"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="SkyRect" type="ColorRect" parent="ParallaxBackground/SkyLayer"]
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 1200.0
+offset_bottom = 900.0
+color = Color(0.82, 0.7, 0.42, 0.6)
+
+[node name="MidLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="MidRect" type="ColorRect" parent="ParallaxBackground/MidLayer"]
+offset_left = -200.0
+offset_top = 200.0
+offset_right = 1000.0
+offset_bottom = 700.0
+color = Color(0.55, 0.42, 0.2, 0.4)
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0.82, 0.7, 0.42, 1.0)
+
+[node name="Player" parent="." instance=ExtResource("2")]
+position = Vector2(320.0, 240.0)
+
+[node name="CrackedWall0" parent="." instance=ExtResource("3")]
+position = Vector2(252, 210)
+secret_id = 16
+
+[node name="CrackedWall0Torch0" type="ColorRect" parent="."]
+offset_left = 227.0
+offset_top = 190.0
+offset_right = 237.0
+offset_bottom = 210.0
+color = Color(1, 0.55, 0, 1)
+
+[node name="CrackedWall0Torch1" type="ColorRect" parent="."]
+offset_left = 267.0
+offset_top = 190.0
+offset_right = 277.0
+offset_bottom = 210.0
+color = Color(1, 0.55, 0, 1)
+
+[node name="CrackedWall1" parent="." instance=ExtResource("3")]
+position = Vector2(138, 240)
+secret_id = 80
+
+[node name="CrackedWall1Torch0" type="ColorRect" parent="."]
+offset_left = 113.0
+offset_top = 220.0
+offset_right = 123.0
+offset_bottom = 240.0
+color = Color(1, 0.55, 0, 1)
+
+[node name="CrackedWall1Torch1" type="ColorRect" parent="."]
+offset_left = 153.0
+offset_top = 220.0
+offset_right = 163.0
+offset_bottom = 240.0
+color = Color(1, 0.55, 0, 1)
+
+[node name="Wall0" parent="." instance=ExtResource("4")]
+position = Vector2(428, 344)
+
+[node name="Wall1" parent="." instance=ExtResource("4")]
+position = Vector2(241, 345)
+
+[node name="Wall2" parent="." instance=ExtResource("4")]
+position = Vector2(450, 187)
+
+[node name="Wall3" parent="." instance=ExtResource("4")]
+position = Vector2(237, 135)
+
+[node name="Wall4" parent="." instance=ExtResource("4")]
+position = Vector2(528, 258)
+
+[node name="Trumpy0" parent="." instance=ExtResource("5")]
+position = Vector2(328, 356)
+trumpy_color = Color(0, 0.8, 1, 1.0)
+
+[node name="Trumpy1" parent="." instance=ExtResource("5")]
+position = Vector2(128, 153)
+trumpy_color = Color(1, 0, 0, 1.0)
+
+[node name="Enemy0" parent="." instance=ExtResource("6")]
+position = Vector2(343, 122)
+
+[node name="Exit_north" parent="." instance=ExtResource("7")]
+position = Vector2(320.0, 20)
+target_scene = "res://scenes/world2/World2_Screen5.tscn"
+spawn_position = Vector2(320.0, 440)
+
+[node name="Boundary_south0" parent="." instance=ExtResource("4")]
+position = Vector2(20, 480)
+
+[node name="Boundary_south1" parent="." instance=ExtResource("4")]
+position = Vector2(80, 480)
+
+[node name="Boundary_south2" parent="." instance=ExtResource("4")]
+position = Vector2(140, 480)
+
+[node name="Boundary_south3" parent="." instance=ExtResource("4")]
+position = Vector2(200, 480)
+
+[node name="Boundary_south4" parent="." instance=ExtResource("4")]
+position = Vector2(260, 480)
+
+[node name="Boundary_south5" parent="." instance=ExtResource("4")]
+position = Vector2(320, 480)
+
+[node name="Boundary_south6" parent="." instance=ExtResource("4")]
+position = Vector2(380, 480)
+
+[node name="Boundary_south7" parent="." instance=ExtResource("4")]
+position = Vector2(440, 480)
+
+[node name="Boundary_south8" parent="." instance=ExtResource("4")]
+position = Vector2(500, 480)
+
+[node name="Boundary_south9" parent="." instance=ExtResource("4")]
+position = Vector2(560, 480)
+
+[node name="Boundary_south10" parent="." instance=ExtResource("4")]
+position = Vector2(620, 480)
+
+[node name="Exit_east_worldgate" parent="." instance=ExtResource("7")]
+position = Vector2(620, 240.0)
+target_scene = "res://scenes/world3/World3_Screen1.tscn"
+spawn_position = Vector2(40, 240.0)
+required_item = "magic_lamp"
+locked_hint = "The way is blocked. Defeat Duneleviathan in this world's dungeon first."
+
+[node name="Exit_west" parent="." instance=ExtResource("7")]
+position = Vector2(20, 240.0)
+target_scene = "res://scenes/world2/World2_Screen7.tscn"
+spawn_position = Vector2(600, 240.0)
+
+[node name="Exit_dungeon" parent="." instance=ExtResource("7")]
+position = Vector2(320.0, 400)
+target_scene = "res://scenes/world2/World2_Dungeon_Room1.tscn"
+spawn_position = Vector2(320.0, 440)
+
+[node name="HUD" parent="." instance=ExtResource("8")]
+
+[node name="InventoryUI" parent="." instance=ExtResource("9")]
+
